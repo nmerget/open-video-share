@@ -1,0 +1,19 @@
+{
+  "peer-process-share-invite-continue": "Continue",
+  "peer-process-share-invite-copied": "Copied invite",
+  "peer-process-share-invite-copy": "Copy invite",
+  "peer-process-share-invite-explanation": "You need to share a invitation. A receiver can scan the QR-Code or you can copy the invitation and share it. After you've shared the invitation, continue.",
+  "peer-process-share-invite-wait": "Wait for other connection",
+  "peer-process-stepper-join": "Join invitation",
+  "peer-process-stepper-share": "Share invitation",
+  "peer-process-stepper-share-or-join": "Share or join",
+  "peer-process-stepper-step": "Step {{val, number}}",
+  "peer-process-select-explanation": "Decide if you want to share your video stream or if you want to receive a video steam.",
+  "peer-process-select-share": "Share",
+  "peer-process-select-receive": "Receive",
+  "peer-process-join-input-label": "Someones invitation",
+  "peer-process-join-connect": "Connect",
+  "peer-process-join-explanation": "Scan the invitation from someone as QR-Code or paste the shared invitation to connect. Afterwards you need to share your own invitation to the other person.",
+  "peer-process-join-scan-qr": "Scan QR-Code",
+  "peer-process-join-paste": "Paste invite"
+}

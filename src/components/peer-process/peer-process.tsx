@@ -1,0 +1,123 @@
+import { useCallback, useEffect } from "react";
+import StepperProcess from "./stepper-process";
+import SelectPeerProcess from "./select-peer-process";
+import { shallow } from "zustand/shallow";
+import ShareInviteProcess from "./share-invite-process";
+import JoinProcess from "./join-process";
+import { usePeerProcessStore, usePeerStore } from "../../store";
+import { PeerProcessStore, PeerStore, TransitionState } from "../../store/data";
+import { SignalData } from "simple-peer";
+import {
+  SIMPLE_PEER_ANSWER,
+  SIMPLE_PEER_CONNECT,
+  SIMPLE_PEER_DATA,
+  SIMPLE_PEER_ERROR,
+  SIMPLE_PEER_OFFER,
+  SIMPLE_PEER_SIGNAL,
+} from "../../utils/constants";
+
+const PeerProcess = () => {
+  const { initiator, setStepper, setTransition } = usePeerProcessStore(
+    (state: PeerProcessStore) => ({
+      initiator: state.initiator,
+      setStepper: state.setStepper,
+      setTransition: state.setTransition,
+    }),
+    shallow
+  );
+
+  const {
+    offer,
+    connected,
+    setOffer,
+    setConnected,
+    setError,
+    setData,
+    setPeer,
+  } = usePeerStore((state: PeerStore) => ({
+    offer: state.offer,
+    connected: state.connected,
+    setOffer: state.setOffer,
+    setConnected: state.setConnected,
+    setError: state.setError,
+    setData: state.setData,
+    setPeer: state.setPeer,
+  }));
+
+  const createPeer = useCallback(
+    (peerInitiator: number) => {
+      const p = new window.SimplePeer({
+        initiator: peerInitiator === 1,
+        trickle: false,
+      });
+
+      p.on(SIMPLE_PEER_SIGNAL, (data: SignalData) => {
+        const signal = JSON.stringify(data);
+        if (
+          data.type === SIMPLE_PEER_OFFER ||
+          data.type === SIMPLE_PEER_ANSWER
+        ) {
+          setOffer(signal);
+        }
+      });
+
+      p.on(SIMPLE_PEER_CONNECT, () => {
+        setConnected(true);
+      });
+
+      p.on(SIMPLE_PEER_ERROR, (error: Error) => {
+        setError(error);
+      });
+      p.on(SIMPLE_PEER_DATA, (data: string) => {
+        setData(data);
+      });
+
+      setPeer(p);
+    },
+    [setConnected, setData, setError, setOffer, setPeer]
+  );
+
+  useEffect(() => {
+    if (initiator > 0) {
+      createPeer(initiator);
+      if (initiator === 2) {
+        setStepper(0);
+        setTransition(TransitionState.SELECT_INVITE_JOIN_END);
+      }
+    }
+  }, [createPeer, initiator, setStepper, setTransition]);
+
+  useEffect(() => {
+    if (offer) {
+      if (initiator === 1) {
+        setStepper(0);
+        setTransition(TransitionState.SELECT_INVITE_JOIN_END);
+      }
+      if (initiator === 2) {
+        setStepper(1);
+        setTransition(TransitionState.JOIN_END);
+      }
+    }
+  }, [initiator, offer, setStepper, setTransition]);
+
+  useEffect(() => {
+    if (connected) {
+      setStepper(2);
+      setTransition(TransitionState.CONNECT_START);
+    }
+  }, [connected, setStepper, setTransition]);
+
+  return (
+    <>
+      <StepperProcess />
+
+      <SelectPeerProcess />
+
+      <ShareInviteProcess />
+
+      <JoinProcess />
+    </>
+  );
+};
+
+export default PeerProcess;
