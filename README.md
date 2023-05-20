@@ -1,4 +1,4 @@
-# Open Video Share 🔓📹🔗
+# [Open Video Share](nmerget.github.io/open-video-share/) 🔓📹🔗
 
 Share a video and/or audio stream between two devices.
 No server and only web APIs, powered via P2P (Peer-to-peer).
@@ -15,3 +15,12 @@ Use it as a baby monitor or security camera. No extra app required. No unsecure 
 2. Create an invitation (QR-Code) and scan it with your receiving device.
 3. Create another invitation on your receiving device and scan it on the sending device.
 4. Your connection is established.
+
+## Developer
+
+### How to start?
+
+```shell
+npm run install
+npm run dev
+```
