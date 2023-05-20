@@ -15,6 +15,7 @@ import {
   SIMPLE_PEER_OFFER,
   SIMPLE_PEER_SIGNAL,
 } from "../../utils/constants";
+import { compress } from "../../utils";
 
 const PeerProcess = () => {
   const { initiator, setStepper, setTransition } = usePeerProcessStore(
@@ -57,7 +58,7 @@ const PeerProcess = () => {
           data.type === SIMPLE_PEER_OFFER ||
           data.type === SIMPLE_PEER_ANSWER
         ) {
-          setOffer(signal);
+          setOffer(compress(signal));
         }
       });
 
