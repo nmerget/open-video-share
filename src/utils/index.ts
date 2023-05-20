@@ -23,4 +23,6 @@ export const decompress = (decompressString: string): string => {
   } catch (e) {
     console.error(e);
   }
+
+  return "";
 };
