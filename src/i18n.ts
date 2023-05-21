@@ -12,6 +12,7 @@ i18n
       loadPath: "./locales/{{lng}}/{{ns}}.json",
     },
     fallbackLng: "en",
+    supportedLngs: ["en"],
     keySeparator: false, // we do not use keys in form messages.welcome
     interpolation: {
       escapeValue: false, // react already safes from xss
