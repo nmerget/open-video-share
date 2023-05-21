@@ -6,8 +6,12 @@ import {
   SegmentedControl,
   Transition,
   Text,
+  Textarea,
 } from "@mantine/core";
-import { DEFAULT_TRANSITION_TIME } from "../../../utils/constants";
+import {
+  DEFAULT_ERROR_NOTIFICATION,
+  DEFAULT_TRANSITION_TIME,
+} from "../../../utils/constants";
 import CenterPaper from "../../center-paper";
 import {
   PeerProcessStore,
@@ -19,6 +23,8 @@ import { shallow } from "zustand/shallow";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import QrCodeScanner from "../../qr-code-scanner";
+import { decompress } from "../../../utils";
+import { notifications } from "@mantine/notifications";
 
 const JoinProcess = () => {
   const { t } = useTranslation();
@@ -81,13 +87,13 @@ const JoinProcess = () => {
 
           {value !== "qr" && (
             <Flex gap="md" direction="column">
-              <JsonInput
+              <Textarea
                 label={t("peer-process-join-input-label")}
                 placeholder={`{"type":"offer|answer","sdn":"..."}`}
                 autosize
-                minRows={4}
-                onChange={(json) => {
-                  setOfferInput(json);
+                minRows={2}
+                onChange={(event) => {
+                  setOfferInput(event.target.value);
                 }}
               />
               <Button
@@ -95,7 +101,18 @@ const JoinProcess = () => {
                 disabled={!offerInput}
                 onClick={() => {
                   if (peer) {
-                    peer.signal(JSON.parse(offerInput || ""));
+                    try {
+                      const signal = JSON.parse(decompress(offerInput));
+                      peer.signal(signal || "");
+                    } catch (e) {
+                      console.error(e);
+                      notifications.show({
+                        ...DEFAULT_ERROR_NOTIFICATION,
+                        title: t("_error"),
+                        message: e.message,
+                        withCloseButton: true,
+                      });
+                    }
                   }
                 }}
               >
