@@ -15,7 +15,6 @@ import {
   SIMPLE_PEER_ERROR,
   SIMPLE_PEER_OFFER,
   SIMPLE_PEER_SIGNAL,
-  SIMPLE_PEER_STREAM,
 } from "../../utils/constants";
 import { compress } from "../../utils";
 import { notifications } from "@mantine/notifications";
@@ -32,40 +31,22 @@ const PeerProcess = () => {
     shallow
   );
 
-  const {
-    offer,
-    connected,
-    setOffer,
-    setConnected,
-    setData,
-    setPeer,
-    setStream,
-  } = usePeerStore((state: PeerStore) => ({
-    offer: state.offer,
-    connected: state.connected,
-    setOffer: state.setOffer,
-    setConnected: state.setConnected,
-    setData: state.setData,
-    setPeer: state.setPeer,
-    setStream: state.setStream,
-  }));
+  const { offer, connected, setOffer, setConnected, setData, setPeer } =
+    usePeerStore((state: PeerStore) => ({
+      offer: state.offer,
+      connected: state.connected,
+      setOffer: state.setOffer,
+      setConnected: state.setConnected,
+      setData: state.setData,
+      setPeer: state.setPeer,
+    }));
 
   const createPeer = useCallback(
-    async (peerInitiator: number) => {
-      let mediaStream: MediaStream | undefined;
-      if (peerInitiator === 1) {
-        mediaStream = await navigator.mediaDevices.getUserMedia({
-          video: true,
-          audio: true,
-        });
-        setStream(mediaStream);
-      }
-
+    (peerInitiator: number) => {
       const p = new window.SimplePeer({
         initiator: peerInitiator === 1,
         trickle: false,
         config: { iceServers: undefined }, // disable servers
-        stream: mediaStream,
       });
 
       p.on(SIMPLE_PEER_SIGNAL, (data: SignalData) => {
@@ -91,18 +72,14 @@ const PeerProcess = () => {
           withCloseButton: true,
         });
       });
-      p.on(SIMPLE_PEER_DATA, (data: string) => {
-        setData(data);
-      });
 
-      p.on(SIMPLE_PEER_STREAM, (stream: MediaStream) => {
-        console.log(stream);
-        setStream(stream);
+      p.on(SIMPLE_PEER_DATA, (data: Uint8Array) => {
+        setData(new TextDecoder().decode(data));
       });
 
       setPeer(p);
     },
-    [setConnected, setData, setOffer, setPeer, setStream, t]
+    [setConnected, setData, setOffer, setPeer, t]
   );
 
   useEffect(() => {
