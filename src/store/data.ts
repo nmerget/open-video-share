@@ -3,14 +3,14 @@ export type PeerStore = {
   peer?: any;
   offer?: string;
   connected?: boolean;
-  error?: Error;
   data?: string;
+  stream?: MediaStream;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setPeer: (peer: any) => void;
   setOffer: (offer: string) => void;
   setConnected: (connected: boolean) => void;
-  setError: (error: Error) => void;
   setData: (data: string) => void;
+  setStream: (stream: MediaStream) => void;
 };
 
 export type PeerProcessStore = {
@@ -23,11 +23,6 @@ export type PeerProcessStore = {
   offerInput: string;
   setOfferInput: (offerInput: string) => void;
 };
-
-export type MessageStore = {
-  messages: string[];
-  addMessage: (message: string) => void;
-}
 
 export enum TransitionState {
   SELECT_INVITE_JOIN_START,

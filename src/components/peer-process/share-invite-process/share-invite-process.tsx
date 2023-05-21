@@ -1,24 +1,13 @@
-import {
-  Button,
-  Center,
-  CopyButton,
-  Flex,
-  Loader,
-  Text,
-  Transition,
-} from "@mantine/core";
+import { Button, Center, CopyButton, Text, Transition } from "@mantine/core";
 import { DEFAULT_TRANSITION_TIME } from "../../../utils/constants";
 import CenterPaper from "../../center-paper";
 import { MantineColor } from "@mantine/styles";
 import QRCode from "react-qr-code";
-import {
-  PeerProcessStore,
-  PeerStore,
-  TransitionState,
-} from "../../../store/data";
+import { PeerProcessStore, PeerStore, TransitionState } from "../../../store/data";
 import { usePeerProcessStore, usePeerStore } from "../../../store";
 import { shallow } from "zustand/shallow";
 import { useTranslation } from "react-i18next";
+import TextLoader from "../../text-loader";
 
 const ShareInviteProcess = () => {
   const { t } = useTranslation();
@@ -86,10 +75,7 @@ const ShareInviteProcess = () => {
             </Button>
           )}
           {initiator === 2 && (
-            <Flex gap="md">
-              <Text>{t("peer-process-share-invite-wait")}</Text>
-              <Loader variant="dots" />
-            </Flex>
+            <TextLoader>{t("peer-process-share-invite-wait")}</TextLoader>
           )}
         </CenterPaper>
       )}

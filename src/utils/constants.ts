@@ -7,6 +7,7 @@ export const SIMPLE_PEER_ANSWER = "answer";
 export const SIMPLE_PEER_CONNECT = "connect";
 export const SIMPLE_PEER_ERROR = "error";
 export const SIMPLE_PEER_DATA = "data";
+export const SIMPLE_PEER_STREAM = "stream";
 
 export const DEFAULT_ERROR_NOTIFICATION = {
   withCloseButton: true,

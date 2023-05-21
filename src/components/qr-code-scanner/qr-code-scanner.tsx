@@ -5,9 +5,10 @@ import "./qr-code-scanner.css";
 import { notifications } from "@mantine/notifications";
 import { DEFAULT_ERROR_NOTIFICATION } from "../../utils/constants";
 import { useTranslation } from "react-i18next";
-import { Button, Flex, Loader, Text } from "@mantine/core";
+import { Button, Flex } from "@mantine/core";
 import { IconLamp, IconLampOff } from "@tabler/icons-react";
 import { MantineColor } from "@mantine/styles";
+import TextLoader from "../text-loader";
 
 const QrCodeScanner = ({ onResult }: QrCodeScannerType) => {
   const { t } = useTranslation();
@@ -24,7 +25,10 @@ const QrCodeScanner = ({ onResult }: QrCodeScannerType) => {
       }
     },
     onError(error: Error) {
-      if (!error.name.includes("NotFoundException")) {
+      if (
+        !error.name.includes("NotFoundException") &&
+        error.name !== "IndexSizeError"
+      ) {
         console.error(error);
         notifications.show({
           ...DEFAULT_ERROR_NOTIFICATION,
@@ -38,11 +42,7 @@ const QrCodeScanner = ({ onResult }: QrCodeScannerType) => {
   return (
     <Flex gap="md" direction="column">
       <video className="qr-code-scanner-video" ref={ref} />
-      <Flex gap="md" align="center" justify="center">
-        <Loader color="cyan" variant="dots" size="sm" />
-        <Text>{t("qr-code-scanner-sill-searching")}</Text>
-        <Loader color="cyan" variant="dots" size="sm" />
-      </Flex>
+      <TextLoader>{t("qr-code-scanner-sill-searching")}</TextLoader>
       {isAvailable && (
         <Button
           w="100%"
