@@ -1,4 +1,13 @@
 {
+  "_error": "Error",
+  "peer-process-join-connect": "Connect",
+  "peer-process-join-explanation": "Scan the invitation from someone as QR-Code or paste the shared invitation for a connection. Afterwards you need to share your own invitation to the other person.",
+  "peer-process-join-input-label": "Someones invitation",
+  "peer-process-join-paste": "Paste invite",
+  "peer-process-join-scan-qr": "Scan QR-Code",
+  "peer-process-select-explanation": "Decide if you want to share your video stream or if you want to receive a video steam.",
+  "peer-process-select-receive": "Receive",
+  "peer-process-select-share": "Share",
   "peer-process-share-invite-continue": "Continue",
   "peer-process-share-invite-copied": "Copied invite",
   "peer-process-share-invite-copy": "Copy invite",
@@ -8,12 +17,7 @@
   "peer-process-stepper-share": "Share invitation",
   "peer-process-stepper-share-or-join": "Share or join",
   "peer-process-stepper-step": "Step {{val, number}}",
-  "peer-process-select-explanation": "Decide if you want to share your video stream or if you want to receive a video steam.",
-  "peer-process-select-share": "Share",
-  "peer-process-select-receive": "Receive",
-  "peer-process-join-input-label": "Someones invitation",
-  "peer-process-join-connect": "Connect",
-  "peer-process-join-explanation": "Scan the invitation from someone as QR-Code or paste the shared invitation to connect. Afterwards you need to share your own invitation to the other person.",
-  "peer-process-join-scan-qr": "Scan QR-Code",
-  "peer-process-join-paste": "Paste invite"
+  "qr-code-scanner-sill-searching": "Still searching for code",
+  "qr-code-scanner-turn-off-torch": "Turn off torch",
+  "qr-code-scanner-turn-on-torch": "Turn on torch"
 }
