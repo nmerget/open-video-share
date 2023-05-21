@@ -15,11 +15,11 @@ import {
   SIMPLE_PEER_ERROR,
   SIMPLE_PEER_OFFER,
   SIMPLE_PEER_SIGNAL,
+  SIMPLE_PEER_STREAM,
 } from "../../utils/constants";
 import { compress } from "../../utils";
 import { notifications } from "@mantine/notifications";
 import { useTranslation } from "react-i18next";
-import { MantineColor } from "@mantine/styles";
 
 const PeerProcess = () => {
   const { t } = useTranslation();
@@ -37,24 +37,35 @@ const PeerProcess = () => {
     connected,
     setOffer,
     setConnected,
-    setError,
     setData,
     setPeer,
+    setStream,
   } = usePeerStore((state: PeerStore) => ({
     offer: state.offer,
     connected: state.connected,
     setOffer: state.setOffer,
     setConnected: state.setConnected,
-    setError: state.setError,
     setData: state.setData,
     setPeer: state.setPeer,
+    setStream: state.setStream,
   }));
 
   const createPeer = useCallback(
-    (peerInitiator: number) => {
+    async (peerInitiator: number) => {
+      let mediaStream: MediaStream | undefined;
+      if (peerInitiator === 1) {
+        mediaStream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+          audio: true,
+        });
+        setStream(mediaStream);
+      }
+
       const p = new window.SimplePeer({
         initiator: peerInitiator === 1,
         trickle: false,
+        config: { iceServers: undefined }, // disable servers
+        stream: mediaStream,
       });
 
       p.on(SIMPLE_PEER_SIGNAL, (data: SignalData) => {
@@ -84,9 +95,14 @@ const PeerProcess = () => {
         setData(data);
       });
 
+      p.on(SIMPLE_PEER_STREAM, (stream: MediaStream) => {
+        console.log(stream);
+        setStream(stream);
+      });
+
       setPeer(p);
     },
-    [setConnected, setData, setError, setOffer, setPeer]
+    [setConnected, setData, setOffer, setPeer, setStream, t]
   );
 
   useEffect(() => {

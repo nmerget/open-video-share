@@ -1,10 +1,5 @@
 import { create } from "zustand";
-import {
-  MessageStore,
-  PeerProcessStore,
-  PeerStore,
-  TransitionState,
-} from "./data";
+import { PeerProcessStore, PeerStore, TransitionState } from "./data";
 import { devtools } from "zustand/middleware";
 import { uuid } from "../utils";
 
@@ -30,21 +25,9 @@ export const usePeerStore = create<PeerStore>()(
       setPeer: (peer) => set(() => ({ peer })),
       setOffer: (offer) => set(() => ({ offer })),
       setConnected: (connected) => set(() => ({ connected })),
-      setError: (error) => set(() => ({ error })),
       setData: (data) => set(() => ({ data })),
+      setStream: (stream) => set(() => ({ stream })),
     }),
     { name: `${storeUUID}-peer-store` }
-  )
-);
-export const useMessageStore = create<MessageStore>()(
-  devtools(
-    (set) => ({
-      messages: ["Connected"],
-      addMessage: (message) =>
-        set((state) => ({
-          messages: [...state.messages, message],
-        })),
-    }),
-    { name: `${storeUUID}-message-store` }
   )
 );
