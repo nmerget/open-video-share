@@ -1,7 +1,7 @@
 {
   "_error": "Error",
   "peer-process-join-connect": "Connect",
-  "peer-process-join-explanation": "Scan the invitation from someone as QR-Code or paste the shared invitation to connect. Afterwards you need to share your own invitation to the other person.",
+  "peer-process-join-explanation": "Scan the invitation from someone as QR-Code or paste the shared invitation for a connection. Afterwards you need to share your own invitation to the other person.",
   "peer-process-join-input-label": "Someones invitation",
   "peer-process-join-paste": "Paste invite",
   "peer-process-join-scan-qr": "Scan QR-Code",
@@ -16,5 +16,8 @@
   "peer-process-stepper-join": "Join invitation",
   "peer-process-stepper-share": "Share invitation",
   "peer-process-stepper-share-or-join": "Share or join",
-  "peer-process-stepper-step": "Step {{val, number}}"
+  "peer-process-stepper-step": "Step {{val, number}}",
+  "qr-code-scanner-sill-searching": "Still searching for code",
+  "qr-code-scanner-turn-off-torch": "Turn off torch",
+  "qr-code-scanner-turn-on-torch": "Turn on torch"
 }
