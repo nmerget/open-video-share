@@ -8,6 +8,7 @@ import { usePeerProcessStore, usePeerStore } from "../../store";
 import { PeerProcessStore, PeerStore, TransitionState } from "../../store/data";
 import { SignalData } from "simple-peer";
 import {
+  DEFAULT_ERROR_NOTIFICATION,
   SIMPLE_PEER_ANSWER,
   SIMPLE_PEER_CONNECT,
   SIMPLE_PEER_DATA,
@@ -16,8 +17,12 @@ import {
   SIMPLE_PEER_SIGNAL,
 } from "../../utils/constants";
 import { compress } from "../../utils";
+import { notifications } from "@mantine/notifications";
+import { useTranslation } from "react-i18next";
+import { MantineColor } from "@mantine/styles";
 
 const PeerProcess = () => {
+  const { t } = useTranslation();
   const { initiator, setStepper, setTransition } = usePeerProcessStore(
     (state: PeerProcessStore) => ({
       initiator: state.initiator,
@@ -67,7 +72,13 @@ const PeerProcess = () => {
       });
 
       p.on(SIMPLE_PEER_ERROR, (error: Error) => {
-        setError(error);
+        console.error(error);
+        notifications.show({
+          ...DEFAULT_ERROR_NOTIFICATION,
+          title: t("_error"),
+          message: error.message,
+          withCloseButton: true,
+        });
       });
       p.on(SIMPLE_PEER_DATA, (data: string) => {
         setData(data);
