@@ -2,11 +2,10 @@ import {
   Button,
   Center,
   Flex,
-  JsonInput,
   SegmentedControl,
-  Transition,
   Text,
   Textarea,
+  Transition,
 } from "@mantine/core";
 import {
   DEFAULT_ERROR_NOTIFICATION,
