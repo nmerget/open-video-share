@@ -10,10 +10,9 @@ const App = () => {
     peer: state.peer,
   }));
 
-  const { transition, initiator } = usePeerProcessStore(
+  const { transition } = usePeerProcessStore(
     (state: PeerProcessStore) => ({
-      transition: state.transition,
-      initiator: state.initiator,
+      transition: state.transition
     }),
     shallow
   );

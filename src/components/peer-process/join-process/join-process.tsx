@@ -103,14 +103,16 @@ const JoinProcess = () => {
                     try {
                       const signal = JSON.parse(decompress(offerInput));
                       peer.signal(signal || "");
-                    } catch (e) {
-                      console.error(e);
-                      notifications.show({
-                        ...DEFAULT_ERROR_NOTIFICATION,
-                        title: t("_error"),
-                        message: e.message,
-                        withCloseButton: true,
-                      });
+                    } catch (error: unknown) {
+                      console.error(error);
+                      if (error instanceof SyntaxError) {
+                        notifications.show({
+                          ...DEFAULT_ERROR_NOTIFICATION,
+                          title: t("_error"),
+                          message: error.message,
+                          withCloseButton: true,
+                        });
+                      }
                     }
                   }
                 }}
