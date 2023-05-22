@@ -4,13 +4,11 @@ export type PeerStore = {
   offer?: string;
   connected?: boolean;
   data?: string;
-  stream?: MediaStream;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setPeer: (peer: any) => void;
   setOffer: (offer: string) => void;
   setConnected: (connected: boolean) => void;
   setData: (data: string) => void;
-  setStream: (stream: MediaStream) => void;
 };
 
 export type PeerProcessStore = {

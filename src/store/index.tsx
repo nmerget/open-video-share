@@ -26,7 +26,6 @@ export const usePeerStore = create<PeerStore>()(
       setOffer: (offer) => set(() => ({ offer })),
       setConnected: (connected) => set(() => ({ connected })),
       setData: (data) => set(() => ({ data })),
-      setStream: (stream) => set(() => ({ stream })),
     }),
     { name: `${storeUUID}-peer-store` }
   )

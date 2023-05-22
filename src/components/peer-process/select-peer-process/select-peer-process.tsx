@@ -53,10 +53,10 @@ const SelectPeerProcess = () => {
           </Center>
           <CenterPaper>
             <Text>{t("peer-process-select-explanation")}</Text>
-            <Button color="cyan" onClick={() => setInitiator(1)}>
+            <Button  onClick={() => setInitiator(1)}>
               {t("peer-process-select-share")}
             </Button>
-            <Button color="cyan" onClick={() => setInitiator(2)}>
+            <Button  onClick={() => setInitiator(2)}>
               {t("peer-process-select-receive")}
             </Button>
             <LoadingOverlay

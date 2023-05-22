@@ -71,6 +71,7 @@ const JoinProcess = () => {
         <CenterPaper style={style}>
           <Text>{t("peer-process-join-explanation")}</Text>
           <SegmentedControl
+            
             value={value}
             onChange={setValue}
             transitionDuration={DEFAULT_TRANSITION_TIME}
@@ -105,7 +106,7 @@ const JoinProcess = () => {
                 }}
               />
               <Button
-                color="cyan"
+                
                 disabled={!offerInput}
                 onClick={() => {
                   if (peer) {

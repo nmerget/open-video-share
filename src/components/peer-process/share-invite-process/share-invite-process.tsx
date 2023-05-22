@@ -3,7 +3,11 @@ import { DEFAULT_TRANSITION_TIME } from "../../../utils/constants";
 import CenterPaper from "../../center-paper";
 import { MantineColor } from "@mantine/styles";
 import QRCode from "react-qr-code";
-import { PeerProcessStore, PeerStore, TransitionState } from "../../../store/data";
+import {
+  PeerProcessStore,
+  PeerStore,
+  TransitionState,
+} from "../../../store/data";
 import { usePeerProcessStore, usePeerStore } from "../../../store";
 import { shallow } from "zustand/shallow";
 import { useTranslation } from "react-i18next";
@@ -54,7 +58,7 @@ const ShareInviteProcess = () => {
             {({ copied, copy }) => (
               <Button
                 variant="outline"
-                color={(copied ? "teal" : "cyan") as MantineColor}
+                color={(copied ? "teal" : "blue") as MantineColor}
                 onClick={copy}
               >
                 {copied
@@ -65,7 +69,6 @@ const ShareInviteProcess = () => {
           </CopyButton>
           {initiator === 1 && (
             <Button
-              color="cyan"
               onClick={() => {
                 setStepper(1);
                 setTransition(TransitionState.SHARE_INVITE_END);

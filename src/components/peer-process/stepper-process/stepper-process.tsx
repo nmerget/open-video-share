@@ -28,7 +28,7 @@ const StepperProcess = () => {
       timingFunction="ease"
     >
       {(styles) => (
-        <Stepper style={{ ...styles }} color="cyan" size="xs" active={stepper}>
+        <Stepper style={{ ...styles }}  size="xs" active={stepper}>
           <Stepper.Step
             label={t("peer-process-stepper-step", { val: 1 })}
             description={
