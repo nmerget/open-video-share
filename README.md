@@ -1,4 +1,4 @@
-# [Open Video Share](nmerget.github.io/open-video-share/) 🔓📹🔗
+# Open Video Share 🔓📹🔗
 
 Share a video and/or audio stream between two devices.
 No server and only web APIs, powered via P2P (Peer-to-peer).

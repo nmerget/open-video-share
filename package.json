@@ -1,15 +1,16 @@
 {
   "name": "open-video-share",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
+  "private": true,
   "scripts": {
-    "copy:simple-peer": "cpy node_modules/simple-peer/simplepeer.min.js public --flat",
-    "predev": "npm run copy:simple-peer",
-    "dev": "vite --open",
-    "prebuild": "npm run copy:simple-peer",
     "build": "tsc && vite build",
+    "copy:simple-peer": "cpy node_modules/simple-peer/simplepeer.min.js public --flat",
+    "dev": "vite --open",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "prebuild": "npm run copy:simple-peer",
+    "predev": "npm run copy:simple-peer",
+    "prepare": "node -e \"try { require('husky').install() } catch (e) {}\"",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -19,6 +20,7 @@
     "@mantine/notifications": "^6.0.11",
     "@tabler/icons-react": "^2.20.0",
     "buffer": "^6.0.3",
+    "husky": "8.0.3",
     "i18next": "^22.5.0",
     "i18next-browser-languagedetector": "^7.0.1",
     "i18next-http-backend": "^2.2.1",
@@ -45,6 +47,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
     "prettier": "^2.8.8",
+    "prettier-plugin-pkg": "0.17.1",
+    "prettier-plugin-sh": "^0.12.8",
     "typescript": "^5.0.2",
     "vite": "^4.3.2"
   }

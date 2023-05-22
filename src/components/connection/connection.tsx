@@ -1,4 +1,4 @@
-import React, { MutableRefObject, useEffect, useRef, useState } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 import CenterPaper from "../center-paper";
 import { usePeerProcessStore, usePeerStore } from "../../store";
 import { PeerProcessStore, PeerStore } from "../../store/data";

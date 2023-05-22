@@ -1,0 +1,10 @@
+{
+  "overrides": [
+    {
+      "files": ["*.sh", ".env"],
+      "options": {
+        "parser": "sh"
+      }
+    }
+  ]
+}
