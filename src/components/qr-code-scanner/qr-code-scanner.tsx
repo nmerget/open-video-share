@@ -30,6 +30,7 @@ const QrCodeScanner = ({ onResult }: QrCodeScannerType) => {
         !error.name.includes("NotFoundException") &&
         error.name !== "IndexSizeError"
       ) {
+        console.error(error.name);
         console.error(error);
         notifications.show({
           ...DEFAULT_ERROR_NOTIFICATION,
