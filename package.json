@@ -11,7 +11,8 @@
     "prebuild": "npm run copy:simple-peer",
     "predev": "npm run copy:simple-peer",
     "prepare": "node -e \"try { require('husky').install() } catch (e) {}\"",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "tsc": "tsc"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
