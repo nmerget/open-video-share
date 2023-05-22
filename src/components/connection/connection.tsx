@@ -5,7 +5,6 @@ import { PeerProcessStore, PeerStore } from "../../store/data";
 import {
   DEFAULT_ERROR_NOTIFICATION,
   SIMPLE_PEER_ANSWER,
-  SIMPLE_PEER_CONNECT,
   SIMPLE_PEER_ERROR,
   SIMPLE_PEER_OFFER,
   SIMPLE_PEER_SIGNAL,
@@ -60,11 +59,6 @@ const Connection = () => {
         ) {
           peer.send(signal);
         }
-      });
-
-      p.on(SIMPLE_PEER_CONNECT, () => {
-        // destroy old peer (this was only to share video peer offers)
-        peer.destroy();
       });
 
       p.on(SIMPLE_PEER_ERROR, (error: Error) => {

@@ -25,6 +25,7 @@ const QrCodeScanner = ({ onResult }: QrCodeScannerType) => {
       }
     },
     onError(error: Error) {
+      // TODO: Handle this for mobile
       if (
         !error.name.includes("NotFoundException") &&
         error.name !== "IndexSizeError"

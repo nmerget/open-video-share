@@ -20,7 +20,7 @@ import {
 import { usePeerProcessStore, usePeerStore } from "../../../store";
 import { shallow } from "zustand/shallow";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import QrCodeScanner from "../../qr-code-scanner";
 import { decompress } from "../../../utils";
 import { notifications } from "@mantine/notifications";
@@ -41,6 +41,13 @@ const JoinProcess = () => {
     );
 
   const [value, setValue] = useState("qr");
+  const [joinSignal, setJoinSignal] = useState<string>();
+
+  useEffect(() => {
+    if (peer && joinSignal) {
+      peer.signal(JSON.parse(joinSignal || ""));
+    }
+  }, [joinSignal, peer]);
 
   return (
     <Transition
@@ -77,8 +84,10 @@ const JoinProcess = () => {
           {value === "qr" && (
             <Center>
               <QrCodeScanner
-                onResult={(result) => {
-                  peer.signal(JSON.parse(result || ""));
+                onResult={(result: string) => {
+                  if (!joinSignal) {
+                    setJoinSignal(result);
+                  }
                 }}
               />
             </Center>
@@ -101,8 +110,9 @@ const JoinProcess = () => {
                 onClick={() => {
                   if (peer) {
                     try {
-                      const signal = JSON.parse(decompress(offerInput));
-                      peer.signal(signal || "");
+                      if (!joinSignal) {
+                        setJoinSignal(decompress(offerInput));
+                      }
                     } catch (error: unknown) {
                       console.error(error);
                       if (error instanceof SyntaxError) {
