@@ -2,8 +2,6 @@ import { Result, useZxing } from "react-zxing";
 import { QrCodeScannerType } from "./data";
 import { decompress } from "../../utils";
 import "./qr-code-scanner.css";
-import { notifications } from "@mantine/notifications";
-import { DEFAULT_ERROR_NOTIFICATION } from "../../utils/constants";
 import { useTranslation } from "react-i18next";
 import { Button, Flex } from "@mantine/core";
 import { IconLamp, IconLampOff } from "@tabler/icons-react";
@@ -22,22 +20,6 @@ const QrCodeScanner = ({ onResult }: QrCodeScannerType) => {
         if (isAvailable && isOn) {
           off();
         }
-      }
-    },
-    onError(error: Error) {
-      // TODO: Handle this for mobile
-      if (
-        !error.name.includes("NotFoundException") &&
-        error.name !== "IndexSizeError"
-      ) {
-        console.error(error.name);
-        console.error(error);
-        notifications.show({
-          ...DEFAULT_ERROR_NOTIFICATION,
-          title: t("_error"),
-          message: error.message,
-          withCloseButton: true,
-        });
       }
     },
   });
