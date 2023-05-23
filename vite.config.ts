@@ -5,7 +5,7 @@ import manifest from "./manifest";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "./",
+  base: "/open-video-share",
   plugins: [
     react(),
     VitePWA({
