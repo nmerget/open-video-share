@@ -1,9 +1,11 @@
+import { lazy } from "react";
 import { Container } from "@mantine/core";
 import { usePeerProcessStore, usePeerStore } from "./store";
 import { PeerProcessStore, PeerStore, TransitionState } from "./store/data";
 import { shallow } from "zustand/shallow";
 import Connection from "./components/connection";
-import PeerProcess from "./components/peer-process";
+
+const PeerProcess = lazy(() => import("./components/peer-process"));
 
 const App = () => {
   const { peer } = usePeerStore((state: PeerStore) => ({
@@ -12,7 +14,7 @@ const App = () => {
 
   const { transition } = usePeerProcessStore(
     (state: PeerProcessStore) => ({
-      transition: state.transition
+      transition: state.transition,
     }),
     shallow
   );
