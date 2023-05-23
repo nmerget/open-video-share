@@ -13,6 +13,7 @@
     "predev": "npm run copy:simple-peer",
     "prepare": "node -e \"try { require('husky').install() } catch (e) {}\"",
     "preview": "vite preview",
+    "test": "playwright test -c playwright.config.ts",
     "tsc": "tsc"
   },
   "dependencies": {
@@ -36,6 +37,7 @@
     "zustand": "^4.3.8"
   },
   "devDependencies": {
+    "@playwright/test": "^1.34.1",
     "@types/node": "^20.1.7",
     "@types/pako": "^2.0.0",
     "@types/react": "^18.0.28",

@@ -24,3 +24,9 @@ dist-ssr
 *.sw?
 
 public/simplepeer.min.js
+/test-results/
+/playwright-report/
+/playwright/.cache/
+/test-results/
+/playwright-report/
+/playwright/.cache/

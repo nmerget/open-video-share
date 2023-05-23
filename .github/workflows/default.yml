@@ -1,0 +1,34 @@
+name: Default Pipeline
+
+on:
+  pull_request:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  init:
+    uses: ./.github/workflows/00-init.yml
+
+  scan-secrets:
+    uses: ./.github/workflows/00-scan-secrets.yml
+
+  build:
+    uses: ./.github/workflows/01-build.yml
+    needs: [init]
+    secrets: inherit
+
+  lint:
+    uses: ./.github/workflows/01-lint.yml
+    needs: [init]
+    secrets: inherit
+
+  e2e:
+    uses: ./.github/workflows/02-e2e.yml
+    needs: [init]
+    secrets: inherit
+
+  deploy:
+    if: github.ref_name == 'main'
+    uses: ./.github/workflows/03-deploy-gh-pages.yml
+    needs: [e2e, build, lint]

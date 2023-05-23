@@ -1,0 +1,10 @@
+---
+repo:
+  - "*"
+
+cicd:
+  - .github/*
+  - .github/**/*
+
+e2e:
+  - e2e/**/*
