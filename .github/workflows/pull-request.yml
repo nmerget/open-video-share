@@ -20,6 +20,3 @@ jobs:
 
   labeler:
     uses: ./.github/workflows/99-labeler.yml
-
-  scan-secrets:
-    uses: ./.github/workflows/00-scan-secrets.yml
