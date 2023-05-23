@@ -29,6 +29,6 @@ jobs:
     secrets: inherit
 
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref_name == 'main'
     uses: ./.github/workflows/03-deploy-gh-pages.yml
     needs: [e2e, build, lint]

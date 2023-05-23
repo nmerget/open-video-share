@@ -23,7 +23,6 @@ jobs:
           install-command: npm ci --ignore-scripts
 
       - name: 📲 Install esbuild (binary workaround)
-        working-directory: ./output/react
         run: npm i -D esbuild-linux-64
 
       - name: 👩‍🔬 Test with Playwright 🎭
