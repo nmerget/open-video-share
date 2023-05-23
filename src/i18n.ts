@@ -9,7 +9,7 @@ i18n
   .use(initReactI18next)
   .init({
     backend: {
-      loadPath: "./open-video-share/locales/{{lng}}/{{ns}}.json",
+      loadPath: "/open-video-share/locales/{{lng}}/{{ns}}.json",
     },
     fallbackLng: "en",
     supportedLngs: ["en"],
