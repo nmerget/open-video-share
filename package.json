@@ -7,6 +7,7 @@
     "build": "tsc && vite build",
     "copy:simple-peer": "cpy node_modules/simple-peer/simplepeer.min.js public --flat",
     "dev": "vite --open",
+    "generate:manifest-icons": "pwa-asset-generator public/open-video-share-icon.png public/icons --favicon -i ./index.html",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "prebuild": "npm run copy:simple-peer",
     "predev": "npm run copy:simple-peer",
@@ -50,7 +51,9 @@
     "prettier": "^2.8.8",
     "prettier-plugin-pkg": "0.17.1",
     "prettier-plugin-sh": "^0.12.8",
+    "pwa-asset-generator": "^6.3.1",
     "typescript": "^5.0.2",
-    "vite": "^4.3.2"
+    "vite": "^4.3.2",
+    "vite-plugin-pwa": "^0.15.0"
   }
 }
