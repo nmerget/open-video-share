@@ -41,7 +41,7 @@
     "@types/node": "^20.3.0",
     "@types/pako": "^2.0.0",
     "@types/react": "^18.2.11",
-    "@types/react-dom": "^18.0.11",
+    "@types/react-dom": "^18.2.5",
     "@types/simple-peer": "^9.11.5",
     "@typescript-eslint/eslint-plugin": "^5.59.9",
     "@typescript-eslint/parser": "^5.59.11",
