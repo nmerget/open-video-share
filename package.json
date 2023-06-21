@@ -45,7 +45,7 @@
     "@types/simple-peer": "^9.11.5",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
     "@typescript-eslint/parser": "^5.60.0",
-    "@vitejs/plugin-react": "^4.0.0",
+    "@vitejs/plugin-react": "^4.0.1",
     "cpy-cli": "^4.2.0",
     "eslint": "^8.43.0",
     "eslint-plugin-react-hooks": "^4.6.0",
