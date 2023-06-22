@@ -24,7 +24,7 @@
     "@tabler/icons-react": "^2.22.0",
     "buffer": "^6.0.3",
     "husky": "8.0.3",
-    "i18next": "^23.2.1",
+    "i18next": "^23.2.2",
     "i18next-browser-languagedetector": "^7.0.2",
     "i18next-http-backend": "^2.2.1",
     "pako": "^2.1.0",
