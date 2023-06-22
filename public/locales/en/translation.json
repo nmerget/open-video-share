@@ -21,7 +21,7 @@
   "peer-process-share-invite-continue": "Continue",
   "peer-process-share-invite-copied": "Copied invite",
   "peer-process-share-invite-copy": "Copy invite",
-  "peer-process-share-invite-explanation": "You need to share a invitation. A receiver can scan the QR-Code or you can copy the invitation and share it. After you've shared the invitation, continue.",
+  "peer-process-share-invite-explanation": "You need to share an invitation. A receiver can scan the QR-Code or you can copy the invitation and share it. After you've shared the invitation, continue.",
   "peer-process-share-invite-wait": "Wait for other connection",
   "peer-process-stepper-join": "Join invitation",
   "peer-process-stepper-share": "Share invitation",
