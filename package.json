@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
-    "@mantine/core": "^6.0.11",
+    "@mantine/core": "^6.0.15",
     "@mantine/hooks": "^6.0.11",
     "@mantine/notifications": "^6.0.14",
     "@tabler/icons-react": "^2.23.0",
