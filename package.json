@@ -32,7 +32,7 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^13.2.2",
     "react-qr-code": "^2.0.12",
-    "react-zxing": "^1.1.4",
+    "react-zxing": "^2.0.0",
     "simple-peer": "^9.11.1",
     "zustand": "^4.4.1"
   },
