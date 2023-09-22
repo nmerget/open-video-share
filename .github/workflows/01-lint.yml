@@ -9,11 +9,11 @@ jobs:
     name: Validate
     runs-on: ubuntu-latest
     steps:
-      - name: ⬇ Checkout repo
+      - name: ⏬ Checkout repo
         uses: actions/checkout@v4
 
       - name: 🔄 Init Cache
-        uses: ./.github/actions/npm-cache
+        uses: nmerget/npm-cache-action@main
 
       - name: 🔬 Validate repo
         run: npm run lint

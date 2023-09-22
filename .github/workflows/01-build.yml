@@ -9,17 +9,17 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: ⬇ Checkout repo
+      - name: ⏬ Checkout repo
         uses: actions/checkout@v4
 
       - name: 🔄 Init Cache
-        uses: ./.github/actions/npm-cache
+        uses: nmerget/npm-cache-action@main
 
       - name: 🔨 Build
         run: npm run build
 
-      - name: ⬆ Upload build
-        uses: ./.github/actions/upload-tar-artifact
+      - name: ⏫ Upload build
+        uses: nmerget/upload-gzip-artifact@main
         with:
-          name: build-output
+          name: frontend-build
           path: dist

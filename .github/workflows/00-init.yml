@@ -4,21 +4,17 @@ name: Init Workflow
 on:
   workflow_call:
 
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   init:
     name: Init
     runs-on: ubuntu-latest
     steps:
-      - name: 🛑 Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.11.0
-
-      - name: ⬇ Checkout repo
+      - name: ⏬ Checkout repo
         uses: actions/checkout@v4
 
       - name: 🔄 Init Cache
-        uses: ./.github/actions/npm-cache
-        id: 'npm-cache'
-
-      - name: 📥 Download deps default-npm-cache
-        if: steps.npm-cache.outputs.cache-hit != 'true'
-        uses: bahmutov/npm-install@v1
+        uses: nmerget/npm-cache-action@main

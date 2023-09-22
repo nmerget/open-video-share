@@ -9,13 +9,13 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: ⬇ Checkout repo
+      - name: ⏬ Checkout repo
         uses: actions/checkout@v4
 
-      - name: ⬇ Download build
-        uses: ./.github/actions/download-tar-artifact
+      - name: ⏬ Download build
+        uses: nmerget/download-gzip-artifact@main
         with:
-          name: build-output
+          name: frontend-build
           path: dist
 
       - name: 🥅 Deploy to GH-Pages
