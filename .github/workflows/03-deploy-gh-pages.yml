@@ -16,7 +16,6 @@ jobs:
         uses: nmerget/download-gzip-artifact@main
         with:
           name: frontend-build
-          path: dist
 
       - name: 🥅 Deploy to GH-Pages
         uses: peaceiris/actions-gh-pages@v3
