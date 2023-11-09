@@ -37,7 +37,7 @@
     "zustand": "^4.4.6"
   },
   "devDependencies": {
-    "@playwright/test": "^1.34.3",
+    "@playwright/test": "^1.39.0",
     "@types/node": "^20.8.10",
     "@types/pako": "^2.0.2",
     "@types/react": "^18.2.37",
