@@ -54,7 +54,7 @@
     "prettier-plugin-pkg": "0.18.0",
     "prettier-plugin-sh": "^0.13.1",
     "pwa-asset-generator": "^6.3.1",
-    "typescript": "^5.2.2",
+    "typescript": "^5.3.2",
     "vite": "^4.5.0",
     "vite-plugin-pwa": "^0.17.2"
   }
