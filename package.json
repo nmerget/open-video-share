@@ -43,7 +43,7 @@
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
     "@types/simple-peer": "^9.11.8",
-    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/eslint-plugin": "^6.18.0",
     "@typescript-eslint/parser": "^5.62.0",
     "@vitejs/plugin-react": "^4.2.1",
     "cpy-cli": "^5.0.0",
