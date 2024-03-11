@@ -21,7 +21,7 @@
     "@mantine/core": "^6.0.11",
     "@mantine/hooks": "^6.0.11",
     "@mantine/notifications": "^6.0.21",
-    "@tabler/icons-react": "^2.47.0",
+    "@tabler/icons-react": "^3.0.0",
     "buffer": "^6.0.3",
     "husky": "9.0.11",
     "i18next": "^23.10.1",
